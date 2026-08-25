@@ -189,3 +189,45 @@ th {
         grid-template-columns: 1fr;
     }
 }
+form {
+    display: grid;
+    gap: 10px;
+    max-width: 600px;
+}
+
+form label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+form input {
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+form button {
+    margin-top: 15px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #1f2937;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #374151;
+}
+
+table button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+}
