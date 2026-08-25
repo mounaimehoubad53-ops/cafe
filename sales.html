@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>المبيعات اليومية</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- القائمة الجانبية -->
+    <aside class="sidebar">
+
+        <h2>☕ المقهى</h2>
+
+        <nav>
+            <a href="index.html">🏠 الرئيسية</a>
+            <a href="sales.html" class="active">💰 المبيعات</a>
+            <a href="#">📦 المخزون</a>
+            <a href="#">🧾 الفواتير</a>
+            <a href="#">🛒 المشتريات</a>
+            <a href="#">📊 التقارير</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- المحتوى -->
+    <main class="main">
+
+        <header>
+            <h1>المبيعات اليومية</h1>
+            <p>تسجيل ومتابعة مبيعات المقهى</p>
+        </header>
+
+
+        <!-- إضافة عملية بيع -->
+        <section class="table-section">
+
+            <h2>➕ إضافة عملية بيع</h2>
+
+            <form id="saleForm">
+
+                <label>اسم المنتج</label>
+
+                <input
+                    type="text"
+                    id="product"
+                    placeholder="مثال: قهوة"
+                    required
+                >
+
+
+                <label>الكمية</label>
+
+                <input
+                    type="number"
+                    id="quantity"
+                    min="1"
+                    placeholder="الكمية"
+                    required
+                >
+
+
+                <label>سعر الوحدة (DA)</label>
+
+                <input
+                    type="number"
+                    id="price"
+                    min="0"
+                    placeholder="مثال: 150"
+                    required
+                >
+
+
+                <button type="submit">
+                    إضافة البيع
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- إجمالي اليوم -->
+        <section class="cards">
+
+            <div class="card">
+
+                <div class="icon">💰</div>
+
+                <div>
+
+                    <h3>إجمالي مبيعات اليوم</h3>
+
+                    <strong id="totalSales">
+                        0 DA
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- جدول المبيعات -->
+        <section class="table-section">
+
+            <h2>📋 مبيعات اليوم</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>المنتج</th>
+                        <th>الكمية</th>
+                        <th>السعر</th>
+                        <th>المجموع</th>
+                        <th>حذف</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="salesTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <script src="sales.js"></script>
+
+</body>
+
+</html>
