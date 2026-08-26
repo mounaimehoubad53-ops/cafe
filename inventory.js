@@ -1,18 +1,20 @@
 let inventory =
     JSON.parse(localStorage.getItem("inventory")) || [];
 
+const form = document.getElementById("inventoryForm");
+const table = document.getElementById("inventoryTable");
+const productCount = document.getElementById("productCount");
+const lowStock = document.getElementById("lowStock");
 
-const form =
-    document.getElementById("inventoryForm");
 
-const table =
-    document.getElementById("inventoryTable");
+function saveInventory() {
 
-const productCount =
-    document.getElementById("productCount");
+    localStorage.setItem(
+        "inventory",
+        JSON.stringify(inventory)
+    );
 
-const lowStock =
-    document.getElementById("lowStock");
+}
 
 
 function displayInventory() {
@@ -21,19 +23,15 @@ function displayInventory() {
 
     let low = 0;
 
-
     inventory.forEach((product, index) => {
 
-        const row =
-            document.createElement("tr");
+        const row = document.createElement("tr");
 
-
-        let status = "";
+        let status;
 
         if (product.quantity <= product.minimum) {
 
             status = "⚠️ منخفض";
-
             low++;
 
         } else {
@@ -41,7 +39,6 @@ function displayInventory() {
             status = "✅ جيد";
 
         }
-
 
         row.innerHTML = `
 
@@ -56,17 +53,12 @@ function displayInventory() {
             <td>${status}</td>
 
             <td>
-
                 <button onclick="deleteProduct(${index})">
-
                     🗑️
-
                 </button>
-
             </td>
 
         `;
-
 
         table.appendChild(row);
 
@@ -88,7 +80,7 @@ form.addEventListener("submit", function(event) {
 
 
     const name =
-        document.getElementById("productName").value;
+        document.getElementById("productName").value.trim();
 
     const quantity =
         Number(
@@ -109,7 +101,17 @@ form.addEventListener("submit", function(event) {
         );
 
 
+    if (!name) {
+
+        alert("أدخل اسم المنتج");
+
+        return;
+    }
+
+
     const product = {
+
+        id: Date.now(),
 
         name: name,
 
@@ -127,29 +129,37 @@ form.addEventListener("submit", function(event) {
     inventory.push(product);
 
 
-    localStorage.setItem(
-        "inventory",
-        JSON.stringify(inventory)
-    );
+    saveInventory();
+
+    displayInventory();
 
 
     form.reset();
 
-    displayInventory();
+
+    alert(
+        "تمت إضافة المنتج بنجاح ✅"
+    );
 
 });
 
 
 function deleteProduct(index) {
 
+    if (
+        !confirm(
+            "هل تريد حذف هذا المنتج؟"
+        )
+    ) {
+
+        return;
+
+    }
+
+
     inventory.splice(index, 1);
 
-
-    localStorage.setItem(
-        "inventory",
-        JSON.stringify(inventory)
-    );
-
+    saveInventory();
 
     displayInventory();
 
