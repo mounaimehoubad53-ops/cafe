@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>المبيعات اليومية</title>
+    <title>المبيعات</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,7 +20,7 @@
         <nav>
             <a href="index.html">🏠 الرئيسية</a>
             <a href="sales.html" class="active">💰 المبيعات</a>
-            <a href="#">📦 المخزون</a>
+            <a href="inventory.html">📦 المخزون</a>
             <a href="#">🧾 الفواتير</a>
             <a href="#">🛒 المشتريات</a>
             <a href="#">📊 التقارير</a>
@@ -29,111 +29,69 @@
     </aside>
 
 
-    <!-- المحتوى -->
+    <!-- المحتوى الرئيسي -->
     <main class="main">
 
         <header>
-            <h1>المبيعات اليومية</h1>
-            <p>تسجيل ومتابعة مبيعات المقهى</p>
+            <h1>💰 المبيعات اليومية</h1>
+            <p>اختر المنتجات لإضافتها إلى الطلب</p>
         </header>
 
 
-        <!-- إضافة عملية بيع -->
-        <section class="table-section">
-
-            <h2>➕ إضافة عملية بيع</h2>
-
-            <form id="saleForm">
-
-                <label>اسم المنتج</label>
-
-                <input
-                    type="text"
-                    id="product"
-                    placeholder="مثال: قهوة"
-                    required
-                >
+        <div class="pos-container">
 
 
-                <label>الكمية</label>
+            <!-- المنتجات -->
 
-                <input
-                    type="number"
-                    id="quantity"
-                    min="1"
-                    placeholder="الكمية"
-                    required
-                >
+            <section class="products-section">
 
+                <h2>☕ المنتجات</h2>
 
-                <label>سعر الوحدة (DA)</label>
+                <div id="productsGrid" class="products-grid">
 
-                <input
-                    type="number"
-                    id="price"
-                    min="0"
-                    placeholder="مثال: 150"
-                    required
-                >
+                    <!-- المنتجات ستظهر هنا تلقائيًا -->
+
+                </div>
+
+            </section>
 
 
-                <button type="submit">
-                    إضافة البيع
-                </button>
+            <!-- الطلب -->
 
-            </form>
+            <section class="order-section">
 
-        </section>
+                <h2>🧾 الطلب الحالي</h2>
+
+                <div id="orderItems">
+
+                    <p class="empty-order">
+                        لم تتم إضافة أي منتجات
+                    </p>
+
+                </div>
 
 
-        <!-- إجمالي اليوم -->
-        <section class="cards">
+                <div class="order-total">
 
-            <div class="card">
+                    <span>الإجمالي</span>
 
-                <div class="icon">💰</div>
-
-                <div>
-
-                    <h3>إجمالي مبيعات اليوم</h3>
-
-                    <strong id="totalSales">
+                    <strong id="orderTotal">
                         0 DA
                     </strong>
 
                 </div>
 
-            </div>
 
-        </section>
+                <button
+                    id="completeSale"
+                    class="complete-sale"
+                >
+                    💳 تسجيل البيع
+                </button>
 
+            </section>
 
-        <!-- جدول المبيعات -->
-        <section class="table-section">
-
-            <h2>📋 مبيعات اليوم</h2>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>المنتج</th>
-                        <th>الكمية</th>
-                        <th>السعر</th>
-                        <th>المجموع</th>
-                        <th>حذف</th>
-                    </tr>
-
-                </thead>
-
-                <tbody id="salesTable">
-
-                </tbody>
-
-            </table>
-
-        </section>
+        </div>
 
     </main>
 
